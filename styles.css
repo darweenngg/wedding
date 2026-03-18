@@ -6,6 +6,8 @@
   --muted: #5d7087;
   --accent: #7e9fca;
   --accent-strong: #5e80ae;
+  --accent-soft: #d6e3f5;
+  --accent-deep: #48678f;
   --line: rgba(94, 128, 174, 0.18);
   --shadow: 0 28px 60px rgba(58, 86, 122, 0.14);
 }
@@ -26,7 +28,7 @@ body {
   background:
     radial-gradient(circle at top left, rgba(171, 196, 233, 0.62), transparent 34%),
     radial-gradient(circle at right center, rgba(119, 154, 201, 0.2), transparent 25%),
-    linear-gradient(180deg, #f4f8fd 0%, #e8f0f8 100%);
+    linear-gradient(180deg, #f6faff 0%, #e8f0f8 100%);
 }
 
 body::before,
@@ -74,7 +76,7 @@ body::after {
   gap: 1.5rem;
   align-items: end;
   background:
-    linear-gradient(rgba(34, 50, 70, 0.25), rgba(34, 50, 70, 0.12)),
+    linear-gradient(rgba(44, 74, 112, 0.26), rgba(34, 50, 70, 0.16)),
     url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80") center/cover;
 }
 
@@ -82,7 +84,9 @@ body::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(245, 250, 255, 0.12), rgba(237, 243, 251, 0.42) 70%, rgba(237, 243, 251, 0.84) 100%);
+  background:
+    linear-gradient(180deg, rgba(240, 247, 255, 0.12), rgba(227, 237, 249, 0.46) 68%, rgba(237, 243, 251, 0.9) 100%),
+    linear-gradient(90deg, rgba(106, 140, 185, 0.14), transparent 45%);
 }
 
 .topbar,
@@ -127,12 +131,20 @@ body::after {
   padding: 3.5rem 2rem 2.25rem;
 }
 
+.hero-copy,
+.hero-card,
+.panel,
+.countdown-item,
+.gallery-card {
+  animation: fade-up 700ms ease both;
+}
+
 .eyebrow {
   margin: 0 0 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-size: 0.78rem;
-  color: var(--muted);
+  color: var(--accent-deep);
 }
 
 h1,
@@ -167,6 +179,7 @@ h1 span {
 .hero-location {
   margin: 1rem 0 0;
   font-size: 1.05rem;
+  color: #314761;
 }
 
 .hero-card {
@@ -190,12 +203,26 @@ h1 span {
 
 .section {
   padding: 5rem clamp(1.25rem, 4vw, 4rem);
+  position: relative;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0)),
+    radial-gradient(circle at top right, rgba(214, 227, 245, 0.18), transparent 28%);
+  opacity: 0.7;
 }
 
 .section-heading {
   display: grid;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 h2 {
@@ -208,24 +235,28 @@ h2 {
   margin: 0;
   color: var(--muted);
   font-size: 1.08rem;
+  position: relative;
+  z-index: 1;
 }
 
 .grid.two-up {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
+  position: relative;
+  z-index: 1;
 }
 
 .panel {
   padding: 2rem;
   border: 1px solid var(--line);
   border-radius: 24px;
-  background: var(--paper);
+  background: linear-gradient(180deg, rgba(252, 254, 255, 0.86), rgba(243, 248, 253, 0.88));
   backdrop-filter: blur(10px);
 }
 
 .panel.accent {
-  background: linear-gradient(180deg, rgba(171, 196, 233, 0.28), rgba(248, 252, 255, 0.92));
+  background: linear-gradient(180deg, rgba(171, 196, 233, 0.34), rgba(248, 252, 255, 0.94));
 }
 
 h3 {
@@ -236,6 +267,8 @@ h3 {
 .story {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(236, 244, 252, 0.55), rgba(247, 250, 255, 0.4));
 }
 
 .story-grid {
@@ -243,6 +276,8 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
   color: var(--muted);
+  position: relative;
+  z-index: 1;
 }
 
 .notes-list {
@@ -264,13 +299,15 @@ h3 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   margin-top: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .countdown-item {
   padding: 1.5rem 1rem;
   border-radius: 22px;
   border: 1px solid var(--line);
-  background: rgba(248, 252, 255, 0.82);
+  background: linear-gradient(180deg, rgba(242, 248, 255, 0.95), rgba(232, 241, 251, 0.9));
   box-shadow: 0 16px 30px rgba(58, 86, 122, 0.08);
 }
 
@@ -279,7 +316,7 @@ h3 {
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1;
-  color: var(--accent-strong);
+  color: var(--accent-deep);
 }
 
 .countdown-item small {
@@ -299,6 +336,8 @@ h3 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
+  position: relative;
+  z-index: 1;
 }
 
 .gallery-card {
@@ -309,6 +348,7 @@ h3 {
   border: 1px solid var(--line);
   background: rgba(248, 252, 255, 0.82);
   box-shadow: 0 18px 36px rgba(58, 86, 122, 0.08);
+  position: relative;
 }
 
 .gallery-card img {
@@ -316,6 +356,15 @@ h3 {
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: saturate(0.72) hue-rotate(190deg) brightness(1.02);
+}
+
+.gallery-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(114, 146, 189, 0.08), rgba(37, 57, 83, 0.14));
+  pointer-events: none;
 }
 
 .registry-section .lead {
@@ -359,21 +408,33 @@ h3 {
 }
 
 .button.primary {
-  background: var(--ink);
+  background: linear-gradient(135deg, var(--accent-deep), var(--accent-strong));
   color: var(--paper-strong);
   box-shadow: 0 14px 30px rgba(34, 50, 70, 0.18);
 }
 
 .button.secondary {
   border: 1px solid var(--line);
-  background: rgba(248, 252, 255, 0.82);
-  color: var(--ink);
+  background: rgba(248, 252, 255, 0.9);
+  color: var(--accent-deep);
 }
 
 .rsvp-contact {
   margin-top: 1.25rem;
   color: var(--muted);
   font-size: 0.96rem;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 900px) {

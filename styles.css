@@ -1,0 +1,345 @@
+:root {
+  --bg: #f7efe5;
+  --paper: rgba(255, 249, 242, 0.78);
+  --paper-strong: #fffaf4;
+  --ink: #2f241d;
+  --muted: #6f5a4b;
+  --accent: #8c5e3c;
+  --line: rgba(90, 61, 42, 0.16);
+  --shadow: 0 28px 60px rgba(73, 44, 24, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(217, 185, 155, 0.65), transparent 34%),
+    radial-gradient(circle at right center, rgba(156, 122, 92, 0.2), transparent 25%),
+    linear-gradient(180deg, #fbf4eb 0%, #f5eadf 100%);
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+body::before {
+  width: 16rem;
+  height: 16rem;
+  top: 8%;
+  right: -4rem;
+  background: rgba(217, 185, 155, 0.3);
+}
+
+body::after {
+  width: 22rem;
+  height: 22rem;
+  bottom: -6rem;
+  left: -8rem;
+  background: rgba(140, 94, 60, 0.14);
+}
+
+.page-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 1rem auto;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 28px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.7), rgba(255, 249, 243, 0.9));
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.hero {
+  position: relative;
+  padding: 1.25rem;
+  min-height: 92vh;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.5rem;
+  align-items: end;
+  background:
+    linear-gradient(rgba(48, 34, 24, 0.2), rgba(48, 34, 24, 0.1)),
+    url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80") center/cover;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(250, 240, 228, 0.12), rgba(247, 239, 229, 0.45) 70%, rgba(247, 239, 229, 0.82) 100%);
+}
+
+.topbar,
+.hero-copy,
+.hero-card {
+  position: relative;
+  z-index: 1;
+}
+
+.topbar {
+  position: absolute;
+  inset: 1.25rem 1.25rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.crest,
+.nav-link {
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.65);
+  color: var(--ink);
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+}
+
+.crest {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.nav-link {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.hero-copy {
+  max-width: 38rem;
+  padding: 3.5rem 2rem 2.25rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  line-height: 0.95;
+}
+
+h1 {
+  font-size: clamp(3.8rem, 8vw, 7rem);
+  max-width: 12ch;
+}
+
+h1 span {
+  color: var(--accent);
+}
+
+.hero-date,
+.hero-location,
+.hero-card p,
+.lead,
+.panel p,
+.notes-list,
+.story-grid p {
+  line-height: 1.7;
+}
+
+.hero-date,
+.hero-location {
+  margin: 1rem 0 0;
+  font-size: 1.05rem;
+}
+
+.hero-card {
+  align-self: end;
+  margin: 0 1rem 1rem 0;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 250, 244, 0.6);
+  border-radius: 24px;
+  background: rgba(255, 249, 242, 0.72);
+  box-shadow: 0 20px 40px rgba(78, 52, 36, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.card-label {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.section {
+  padding: 5rem clamp(1.25rem, 4vw, 4rem);
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  max-width: 12ch;
+}
+
+.lead {
+  max-width: 52rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.grid.two-up {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.panel {
+  padding: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--paper);
+  backdrop-filter: blur(10px);
+}
+
+.panel.accent {
+  background: linear-gradient(180deg, rgba(217, 185, 155, 0.22), rgba(255, 249, 243, 0.9));
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.story {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  color: var(--muted);
+}
+
+.notes-list {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+}
+
+.rsvp {
+  text-align: center;
+}
+
+.rsvp .section-heading {
+  justify-items: center;
+}
+
+.rsvp h2,
+.rsvp .lead {
+  max-width: 18ch;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 11rem;
+  padding: 0.95rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button.primary {
+  background: var(--ink);
+  color: var(--paper-strong);
+  box-shadow: 0 14px 30px rgba(47, 36, 29, 0.18);
+}
+
+.button.secondary {
+  border: 1px solid var(--line);
+  background: rgba(255, 249, 243, 0.8);
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .grid.two-up,
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 5rem;
+  }
+
+  .hero-copy {
+    padding: 2rem 1rem 0.5rem;
+  }
+
+  .hero-card {
+    margin: 0 0.5rem 0.5rem;
+  }
+
+  h1 {
+    font-size: clamp(3.2rem, 16vw, 5rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 1rem, 1120px);
+    margin: 0.5rem auto;
+    border-radius: 22px;
+  }
+
+  .topbar {
+    inset: 0.75rem 0.75rem auto;
+  }
+
+  .section {
+    padding: 3.75rem 1rem;
+  }
+
+  .panel,
+  .hero-card {
+    padding: 1.5rem;
+  }
+}
